@@ -13,6 +13,23 @@ public class Carro {
 
 
 
+
+    public void acelerar(){
+
+        if(qtdeCombustivel >0){
+            velocidadeAtual = velocidadeAtual+(0.01*potencia);
+            qtdeCombustivel = qtdeCombustivel-(0.005*potencia);
+        }
+
+    }
+
+    public void abastecer(double qtde){
+        if(qtde+qtdeCombustivel <= maxTanque){
+            qtdeCombustivel = qtdeCombustivel+qtde;
+        }
+
+    }
+
     public String toString(){
 
         String s="";
