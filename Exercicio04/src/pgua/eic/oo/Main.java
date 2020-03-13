@@ -1,11 +1,18 @@
 package pgua.eic.oo;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
         // write your code here
         //declarando um Vetor
         Carro[] carros;
+        Carro selecionado;
+
+        int op,op2;
+        Scanner scan = new Scanner(System.in);
+        double qtde;
 
         //alocando os espacos do vetor
         carros = new Carro[3];
@@ -44,6 +51,46 @@ public class Main {
                     break;
             }
         }
+
+
+        do{
+            System.out.println("Escolha um carro:");
+            for(int i=0;i<carros.length;i++){
+                System.out.println((i+1)+" - "+carros[i].modelo);
+            }
+            System.out.println("0 - Sair");
+
+            op = scan.nextInt();
+            if(op > 0 && op<=carros.length){
+                selecionado = carros[op-1];
+
+                do{
+                    System.out.println("1 - Acelerar");
+                    System.out.println("2 - Abastecer");
+                    System.out.println("3 - Estado");
+                    System.out.println("0 - Sair");
+                    op2 = scan.nextInt();
+
+                    switch (op2){
+                        case 1:
+                            selecionado.acelerar();
+                            break;
+                        case 2:
+                            System.out.println("Digite a quantidade de combutível:");
+                            qtde = scan.nextDouble();
+                            selecionado.abastecer(qtde);
+                            break;
+                        case 3:
+                            System.out.println(selecionado.toString());
+                            break;
+                    }
+                }while(op2 != 0);
+
+            }
+        }while (op!=0);
+
+
+
 
         /*
         //declarando três carros
